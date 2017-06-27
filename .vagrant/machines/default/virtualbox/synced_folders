@@ -1,0 +1,1 @@
+{"virtualbox":{"/srv/salt/":{"guestpath":"/srv/salt","hostpath":"G:/football/salt_vagrant/assessment2/salt/roots","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"G:/football/salt_vagrant/assessment2","disabled":false,"__vagrantfile":true}}}
