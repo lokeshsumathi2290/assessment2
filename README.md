@@ -1,4 +1,4 @@
 # assessment2
 
 
-Provision Vagrant boxes using Saltstack.
+Provision Vagrant boxes using Masterless Saltstack.
