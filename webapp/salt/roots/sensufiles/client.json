@@ -1,22 +1,12 @@
 {
   "client": {
-    "name": "sensu-server",
+    "name": "webapp",
     "address": "127.0.0.1",
     "environment": "development",
     "subscriptions": [
-      "dev"
+      "dev",
+      "url"
     ],
-    "disk": {
-       "warning": 75,
-       "critical": 85
-    },
-    "memory": {
-       "warning": 90,
-       "critical": 95
-    },
-    "load": {
-       "critical": "1/5/15"
-    },
     "url": {
     },   
     "socket": {

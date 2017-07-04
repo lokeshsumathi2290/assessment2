@@ -40,6 +40,15 @@ sensu:
      - require:
          - pkg: sensu
 
+/etc/sensu/conf.d/web_check.json:
+   file.managed:
+     - source: salt://sensufiles/web_check.json
+     - user: root
+     - group: root
+     - mode: 644
+     - require:
+         - pkg: sensu
+
 install_disk_check:
    cmd.run:
        - name: "/usr/bin/sensu-install -p disk-checks"
@@ -60,17 +69,17 @@ install_load_checks:
     - unless: test -f /opt/sensu/embedded/bin/check-load.rb
     - require:
          - file: /etc/sensu/conf.d/client.json
-
 'g++':
    pkg.installed
 
+
 install_url_check:
    cmd.run:
-      - name: "/usr/bin/sensu-install -p http"
-      - unless: test -f /opt/sensu/embedded/bin/check-http.rb
-      - require:
-          - file: /etc/sensu/conf.d/client.json
-          - pkg: 'g++'
+     - name: "/usr/bin/sensu-install -p http"
+     - unless: test -f /opt/sensu/embedded/bin/check-http.rb
+     - require:
+         - file: /etc/sensu/conf.d/client.json
+         - pkg: 'g++'
 
 sensu-client:
   service.running:
@@ -78,8 +87,10 @@ sensu-client:
     - require:
        - file: /etc/sensu/conf.d/client.json
        - file: /etc/sensu/config.json
+       - file: /etc/sensu/conf.d/web_check.json
        - cmd: install_disk_check
        - cmd: install_memory_check
        - cmd: install_load_checks
        - cmd: install_url_check
+       - pkg: 'g++'
      
