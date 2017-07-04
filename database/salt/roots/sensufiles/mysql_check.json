@@ -1,0 +1,14 @@
+{
+      "checks": {
+        "check_mysql": {
+         "command": "/opt/sensu/embedded/bin/check-mysql-connections.rb --host=localhost --user=root --pass=mysqlPassword --socket=/var/run/mysqld/mysqld.sock",
+      "interval": 60,
+      "occurrences": 5,
+      "standalone": true,
+      "subscriptions": [
+      "mysql"
+    ],
+      "environment": ":::environment|development:::"
+        }
+      }
+}

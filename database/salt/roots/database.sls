@@ -46,7 +46,7 @@ commands:
     
 webapp:
   mysql_user.present:
-    - host: localhost
+    - host: '%'
     - password: mysqlWebapp
     - connection_host: localhost
     - connection_user: root
@@ -54,3 +54,16 @@ webapp:
     - connection_charset: utf8
     - require:
        - service: mysql
+
+grant_permission:
+   mysql_grants.present:
+       - grant: all privileges
+       - database: '*.*'
+       - user: webapp
+       - host: '%'
+       - connection_host: localhost
+       - connection_user: root
+       - connection_pass: mysqlPassword
+       - connection_charset: utf8
+       - require:
+          - mysql_user: webapp
