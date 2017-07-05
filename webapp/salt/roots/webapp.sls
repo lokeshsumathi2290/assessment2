@@ -107,7 +107,7 @@ extracting_nohup:
 
 starting_service:
   cmd.run:
-    - name: /bin/sh -x start.sh
+    - name: cat start.sh | tr -d '\r' > start.sh.new ; rm -f start.sh ; mv start.sh.new start.sh ; /bin/sh -x start.sh
     - cwd: /opt/gocode/src/github.com/blue-jay/blueprint
     - require:
        - file: /opt/gocode/src/github.com/blue-jay/blueprint/start.sh
